@@ -1,0 +1,7 @@
+{{ define "default.component.checkboxfield" }}
+    <div class="{{ .Class }}">
+        <input type="checkbox" id="{{ .Identifier }}" name="{{ .Name }}"
+               value="{{ .Value }}"{{ if .Checked }} checked{{end}}>
+        <label for="{{ .Identifier }}">{{ .Content }}</label>
+    </div>
+{{ end }}

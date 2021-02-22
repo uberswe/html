@@ -1,0 +1,11 @@
+{{ define "default.component.selectfield" }}
+    <div class="{{ .Class }}">
+        <label for="{{ .Identifier }}">Choose a car:</label>
+
+        <select name="{{ .Name }}" id="{{ .Identifier }}">
+            {{range .Options }}
+                <option value="{{ .Value }}">{{ .Content }}</option>
+            {{ end }}
+        </select>
+    </div>
+{{ end }}

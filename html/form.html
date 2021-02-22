@@ -1,0 +1,7 @@
+{{ define "default.component.form" }}
+    <form method="{{ .Method }}" action="{{ .Action }}">
+        {{range .Fields }}
+            {{ $.RenderField .Render . }}
+        {{ end }}
+    </form>
+{{ end }}

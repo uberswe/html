@@ -2,37 +2,50 @@ package html
 
 import (
 	"bytes"
-	"fmt"
 	"html/template"
 	"log"
+	"strings"
 )
 
 // Component is anything that can be rendered on a page. A text field is a component but so is the form the text field is a part of.
 type Component interface {
-	GetSection() string
-	// render returns a html template string with the content of the field
 	Render() string
 	GetTemplateName() string
-	GetTheme() string
 	GetTemplate() *template.Template
+}
+
+type BaseComponent struct {
+	Class          string
+	Content        string
+	TemplateString string
+	Template       *template.Template
+}
+
+// GetTemplate is a getter for the T Property
+func (b BaseComponent) GetTemplate() *template.Template {
+	return b.Template
+}
+
+// GetTemplateName is a getter for the Template Property
+func (b BaseComponent) GetTemplateName() string {
+	return b.TemplateString
 }
 
 // RenderComponent takes the provided component and finds the relevant template and renders this into a string
 func RenderComponent(c Component) string {
-	path := fmt.Sprintf("%s.%s", c.GetTheme(), c.GetTemplateName())
 	var foundTemplate *template.Template
 	if c.GetTemplate() == nil {
 		return ""
 	}
-	if foundTemplate = c.GetTemplate().Lookup(path); foundTemplate == nil {
-		log.Printf("Component file not found %s\n", path)
+	if foundTemplate = c.GetTemplate().Lookup(c.GetTemplateName()); foundTemplate == nil {
+		log.Printf("Component template not found %s\n", c.GetTemplateName())
 		return ""
 	}
 	buf := &bytes.Buffer{}
 	err := foundTemplate.Execute(buf, c)
 	if err != nil {
-		log.Printf("Component file error executing template %s\n", path)
+		log.Printf("Component error executing template %s\n", c.GetTemplateName())
 		return ""
 	}
-	return buf.String()
+	return strings.TrimSpace(buf.String())
 }
