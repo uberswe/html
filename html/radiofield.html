@@ -1,7 +1,0 @@
-{{ define "default.component.radiofield" }}
-    <div class="{{ .Class }}">
-        <input type="radio" id="{{ .Identifier }}" name="{{ .Name }}"
-               value="{{ .Value }}"{{ if .Checked }} checked{{end}}>
-        <label for="{{ .Identifier }}">{{ .Content }}</label>
-    </div>
-{{ end }}

@@ -14,23 +14,6 @@ type Component interface {
 	GetTemplate() *template.Template
 }
 
-type BaseComponent struct {
-	Class          string
-	Content        string
-	TemplateString string
-	Template       *template.Template
-}
-
-// GetTemplate is a getter for the T Property
-func (b BaseComponent) GetTemplate() *template.Template {
-	return b.Template
-}
-
-// GetTemplateName is a getter for the Template Property
-func (b BaseComponent) GetTemplateName() string {
-	return b.TemplateString
-}
-
 // RenderComponent takes the provided component and finds the relevant template and renders this into a string
 func RenderComponent(c Component) string {
 	var foundTemplate *template.Template
@@ -48,4 +31,29 @@ func RenderComponent(c Component) string {
 		return ""
 	}
 	return strings.TrimSpace(buf.String())
+}
+
+type BaseComponent struct {
+	TemplateString string
+	Template       *template.Template
+}
+
+// GetTemplate is a getter for the T Property
+func (b BaseComponent) GetTemplate() *template.Template {
+	return b.Template
+}
+
+// GetTemplateName is a getter for the Template Property
+func (b BaseComponent) GetTemplateName() string {
+	return b.TemplateString
+}
+
+func (b BaseComponent) SetTemplate(template *template.Template) BaseComponent {
+	b.Template = template
+	return b
+}
+
+func (b BaseComponent) SetTemplateName(template string) BaseComponent {
+	b.TemplateString = template
+	return b
 }

@@ -5,17 +5,7 @@ import (
 	"testing"
 )
 
-func TestButtonRender(t *testing.T) {
-	expected := "<button class=\"test\">Test</button>"
-
-	b := Button().Class("test").Content("Test")
-
-	if b.Render() != expected {
-		t.Errorf("HTML output (%s) does not match expected output: %s", b.Render(), expected)
-	}
-}
-
-func TestButtonWithLinkRender(t *testing.T) {
+func TestTextRender(t *testing.T) {
 	expected1 := "<button class=\"test2\">Test2</button>"
 	expected2 := "<a href=\"https://beubo.com\">"
 

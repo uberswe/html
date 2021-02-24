@@ -1,4 +1,6 @@
-{{ define "default.component.textareafield" }}
+package source
+
+var Textarea = `{{ define "component.textarea" }}
     <div class="{{ .Class }}">
         <label for="{{ .Identifier }}">{{ .Label }}</label>
 
@@ -6,4 +8,4 @@
             {{ .Content }}
         </textarea>
     </div>
-{{ end }}
+{{ end }}`
