@@ -11,7 +11,7 @@ func TestTextRender(t *testing.T) {
 	expected3 := "<input type=\"email\" id=\"test\" name=\"test\" value=\"test\" placeholder=\"markus@beubo.com\">"
 	expected4 := "</div"
 
-	b := Text().Value("test").Name("test").Label("Test").Type("email").Placeholdler("markus@beubo.com").Id("test").Class("test")
+	b := Text().Value("test").Name("test").Label("Test").Type("email").Placeholder("markus@beubo.com").ID("test").Class("test")
 
 	if !strings.Contains(b.Render(), expected1) {
 		t.Errorf("HTML output (%s) does not contain expected output: %s", b.Render(), expected1)

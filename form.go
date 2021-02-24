@@ -14,6 +14,7 @@ type FormStruct struct {
 	FieldsArray []Component
 }
 
+// Form creates a FormStruct with default values
 func Form() FormStruct {
 	tmpl, _ := template.New("form").Parse(source.Form)
 	return FormStruct{
@@ -37,21 +38,25 @@ func (f FormStruct) RenderField(value string, field Component) template.HTML {
 	return template.HTML(value)
 }
 
+// Fields sets the fields of the form, these are components like buttons, checkboxes, and more
 func (f FormStruct) Fields(components ...Component) FormStruct {
 	f.FieldsArray = components
 	return f
 }
 
+// Class sets the class of the form
 func (f FormStruct) Class(class string) FormStruct {
 	f.ClassField = class
 	return f
 }
 
+// Method sets the method of the form
 func (f FormStruct) Method(method string) FormStruct {
 	f.MethodField = method
 	return f
 }
 
+// Action sets the action of the form
 func (f FormStruct) Action(action string) FormStruct {
 	f.ActionField = action
 	return f

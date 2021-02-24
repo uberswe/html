@@ -11,7 +11,7 @@ func TestFileRender(t *testing.T) {
 	expected3 := "<input type=\"file\" id=\"test\" name=\"test\" accept=\"image/png, image/jpeg\">"
 	expected4 := "</div>"
 
-	f := File().Class("test").Content("Test").Name("test").Id("test").Accept("image/png, image/jpeg")
+	f := File().Class("test").Label("Test").Name("test").ID("test").Accept("image/png, image/jpeg")
 
 	if !strings.Contains(f.Render(), expected1) {
 		t.Errorf("HTML output (%s) does not contain expected output: %s", f.Render(), expected1)

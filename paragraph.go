@@ -12,6 +12,7 @@ type ParagraphStruct struct {
 	ContentField string
 }
 
+// Paragraph creates a new ParagraphStruct with default values
 func Paragraph() ParagraphStruct {
 	tmpl, _ := template.New("paragraph").Parse(source.Paragraph)
 	return ParagraphStruct{
@@ -27,11 +28,13 @@ func (p ParagraphStruct) Render() string {
 	return RenderComponent(p)
 }
 
+// Class sets the class of the paragraph
 func (p ParagraphStruct) Class(class string) ParagraphStruct {
 	p.ClassField = class
 	return p
 }
 
+// Content sets the content of the paragraph
 func (p ParagraphStruct) Content(content string) ParagraphStruct {
 	p.ContentField = content
 	return p

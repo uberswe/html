@@ -17,7 +17,7 @@ func TestSelectRender(t *testing.T) {
 	option1 := Option().Label("Option 1").Value("option1")
 	option2 := Option().Label("Option 1").Value("option1")
 
-	s := Select().Class("test").Name("test").Label("Test").Id("test").Options(option1, option2)
+	s := Select().Class("test").Name("test").Label("Test").ID("test").Options(option1, option2)
 
 	if !strings.Contains(s.Render(), expected1) {
 		t.Errorf("HTML output (%s) does not contain expected output: %s", s.Render(), expected1)

@@ -11,7 +11,7 @@ func TestCheckboxRender(t *testing.T) {
 	expected3 := "<label for=\"test\">Test</label>"
 	expected4 := "</div>"
 
-	c := Checkbox().Class("test").Content("Test").Name("test").Id("test").Value("test").Check()
+	c := Checkbox().Class("test").Label("Test").Name("test").ID("test").Value("test").Check()
 
 	if !strings.Contains(c.Render(), expected1) {
 		t.Errorf("HTML output (%s) does not contain expected output: %s", c.Render(), expected1)

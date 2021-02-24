@@ -2,7 +2,7 @@ package source
 
 var Radio = `{{ define "component.radio" }}
     <div class="{{ .ClassField }}">
-        <input type="radio" id="{{ .IdField }}" name="{{ .NameField }}" value="{{ .ValueField }}"{{ if .Checked }} checked{{end}}>
-        <label for="{{ .IdField }}">{{ .LabelField }}</label>
+        <input type="radio" id="{{ .IDField }}" name="{{ .NameField }}" value="{{ .ValueField }}"{{ if .Checked }} checked{{end}}>
+        <label for="{{ .IDField }}">{{ .LabelField }}</label>
     </div>
 {{ end }}`

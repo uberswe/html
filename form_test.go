@@ -15,7 +15,7 @@ func TestFormRender(t *testing.T) {
 	expected7 := "</form>"
 	expected8 := "</div>"
 
-	textField := Text().Label("Test").Class("test").Id("test").Name("test")
+	textField := Text().Label("Test").Class("test").ID("test").Name("test")
 
 	button := Button().Class("button").Content("This is a button")
 

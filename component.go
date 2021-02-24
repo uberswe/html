@@ -33,6 +33,7 @@ func RenderComponent(c Component) string {
 	return strings.TrimSpace(buf.String())
 }
 
+// BaseComponent defines the fields all components must have
 type BaseComponent struct {
 	TemplateString string
 	Template       *template.Template
@@ -48,11 +49,13 @@ func (b BaseComponent) GetTemplateName() string {
 	return b.TemplateString
 }
 
+// SetTemplate sets the template used for rendering the html
 func (b BaseComponent) SetTemplate(template *template.Template) BaseComponent {
 	b.Template = template
 	return b
 }
 
+// SetTemplateName sets the name of the template for generating the component
 func (b BaseComponent) SetTemplateName(template string) BaseComponent {
 	b.TemplateString = template
 	return b

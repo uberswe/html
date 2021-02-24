@@ -5,7 +5,7 @@ import (
 	"html/template"
 )
 
-// Button is a Component that can be rendered using HTML templates
+// ButtonStruct is a Component that can be rendered using HTML templates
 type ButtonStruct struct {
 	BaseComponent
 	ClassField   string
@@ -18,6 +18,7 @@ func (b ButtonStruct) Render() string {
 	return RenderComponent(b)
 }
 
+// Button initializes a ButtonStruct with default values
 func Button() ButtonStruct {
 	tmpl, _ := template.New("button").Parse(source.Button)
 	return ButtonStruct{
@@ -28,16 +29,19 @@ func Button() ButtonStruct {
 	}
 }
 
+// Link makes a Button a link if provided
 func (b ButtonStruct) Link(link string) ButtonStruct {
 	b.LinkField = template.URL(link)
 	return b
 }
 
+// Class sets a class to a button
 func (b ButtonStruct) Class(class string) ButtonStruct {
 	b.ClassField = class
 	return b
 }
 
+// Content sets the content of a button
 func (b ButtonStruct) Content(content string) ButtonStruct {
 	b.ContentField = content
 	return b

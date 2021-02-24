@@ -13,6 +13,7 @@ type TableStruct struct {
 	RowsArray   []RowStruct
 }
 
+// Table creates a new TableStruct with default values
 func Table() TableStruct {
 	tmpl, _ := template.New("table").Parse(source.Table)
 	return TableStruct{
@@ -28,11 +29,13 @@ func (t TableStruct) Render() string {
 	return RenderComponent(t)
 }
 
+// Header sets one or more header columns for the table
 func (t TableStruct) Header(columns ...ColumnStruct) TableStruct {
 	t.HeaderArray = columns
 	return t
 }
 
+// Rows sets one or more rows for the table
 func (t TableStruct) Rows(rows ...RowStruct) TableStruct {
 	t.RowsArray = rows
 	return t
@@ -43,6 +46,7 @@ func (t TableStruct) RenderColumn(c ColumnStruct) string {
 	return RenderComponent(c.ComponentField)
 }
 
+// Class sets the class of the table
 func (t TableStruct) Class(class string) TableStruct {
 	t.ClassField = class
 	return t
@@ -53,10 +57,12 @@ type RowStruct struct {
 	ColumnsArray []ColumnStruct
 }
 
+// Row creates a RowStruct with default values
 func Row() RowStruct {
 	return RowStruct{}
 }
 
+// Columns sets one or more columns to a row
 func (r RowStruct) Columns(columns ...ColumnStruct) RowStruct {
 	r.ColumnsArray = columns
 	return r
@@ -70,6 +76,7 @@ type ColumnStruct struct {
 	ValueField string
 }
 
+// Column creates a new ColumnStruct with default values
 func Column() ColumnStruct {
 	return ColumnStruct{}
 }
@@ -82,16 +89,19 @@ func (c ColumnStruct) RenderField(value string, field Component) template.HTML {
 	return template.HTML(value)
 }
 
+// Name sets the name of the column used for headers only
 func (c ColumnStruct) Name(name string) ColumnStruct {
 	c.NameField = name
 	return c
 }
 
+// Value sets the value of the column used for rows only and only used if there is no field
 func (c ColumnStruct) Value(value string) ColumnStruct {
 	c.ValueField = value
 	return c
 }
 
+// Field sets the field of the column and will override any value
 func (c ColumnStruct) Field(component Component) ColumnStruct {
 	c.ComponentField = component
 	return c

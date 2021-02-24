@@ -13,7 +13,7 @@ func TestTextAreaRender(t *testing.T) {
 	expected5 := "</textarea>"
 	expected6 := "</div"
 
-	b := TextArea().Name("test").Content("TestField").Label("Text area").Id("test").Class("test").Cols(50).Rows(10)
+	b := TextArea().Name("test").Content("TestField").Label("Text area").ID("test").Class("test").Cols(50).Rows(10)
 
 	if !strings.Contains(b.Render(), expected1) {
 		t.Errorf("HTML output (%s) does not contain expected output: %s", b.Render(), expected1)
