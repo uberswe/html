@@ -1,11 +1,10 @@
 package source
 
 var Textarea = `{{ define "component.textarea" }}
-    <div class="{{ .Class }}">
-        <label for="{{ .Identifier }}">{{ .Label }}</label>
-
-        <textarea id="{{ .Identifier }}" name="{{ .Name }}" rows="{{ .Rows }}" cols="{{ .Cols }}">
-            {{ .Content }}
+    <div class="{{ .ClassField }}">
+        <label for="{{ .IdField }}">{{ .LabelField }}</label>
+        <textarea id="{{ .IdField }}" name="{{ .NameField }}" rows="{{ .RowsCount }}" cols="{{ .ColsCount }}">
+            {{ .ContentField }}
         </textarea>
     </div>
 {{ end }}`

@@ -5,13 +5,15 @@ import (
 	"testing"
 )
 
-func TestTextRender(t *testing.T) {
+func TestTextAreaRender(t *testing.T) {
 	expected1 := "<div class=\"test\">"
-	expected2 := "<label for=\"test\">Test</label>"
-	expected3 := "<input type=\"email\" id=\"test\" name=\"test\" value=\"test\" placeholder=\"markus@beubo.com\">"
-	expected4 := "</div"
+	expected2 := "<label for=\"test\">Text area</label>"
+	expected3 := "<textarea id=\"test\" name=\"test\" rows=\"10\" cols=\"50\">"
+	expected4 := "TestField"
+	expected5 := "</textarea>"
+	expected6 := "</div"
 
-	b := Text().Value("test").Name("test").Label("Test").Type("email").Placeholdler("markus@beubo.com").Id("test").Class("test")
+	b := TextArea().Name("test").Content("TestField").Label("Text area").Id("test").Class("test").Cols(50).Rows(10)
 
 	if !strings.Contains(b.Render(), expected1) {
 		t.Errorf("HTML output (%s) does not contain expected output: %s", b.Render(), expected1)
@@ -27,5 +29,13 @@ func TestTextRender(t *testing.T) {
 
 	if !strings.Contains(b.Render(), expected4) {
 		t.Errorf("HTML output (%s) does not contain expected output: %s", b.Render(), expected4)
+	}
+
+	if !strings.Contains(b.Render(), expected5) {
+		t.Errorf("HTML output (%s) does not contain expected output: %s", b.Render(), expected5)
+	}
+
+	if !strings.Contains(b.Render(), expected6) {
+		t.Errorf("HTML output (%s) does not contain expected output: %s", b.Render(), expected6)
 	}
 }

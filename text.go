@@ -9,7 +9,6 @@ import (
 type TextStruct struct {
 	BaseComponent
 	ClassField       string
-	ContentField     string
 	NameField        string
 	IdField          string
 	ValueField       string
@@ -36,11 +35,6 @@ func (t TextStruct) Render() string {
 
 func (t TextStruct) Class(class string) TextStruct {
 	t.ClassField = class
-	return t
-}
-
-func (t TextStruct) Content(content string) TextStruct {
-	t.ContentField = content
 	return t
 }
 
